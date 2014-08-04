@@ -140,7 +140,6 @@ type Node interface {
 	Namespace() string
 	SetNamespace(string, string)
 	DeclareNamespace(string, string)
-	RemoveDefaultNamespace()
 	DeclaredNamespaces() []NamespaceDeclaration
 }
 
@@ -1056,10 +1055,6 @@ func (xmlNode *XmlNode) RecursivelyRemoveNamespaces() (err error) {
 	return
 }
 
-func (xmlNode *XmlNode) RemoveDefaultNamespace() {
-	nodePtr := xmlNode.Ptr
-	C.xmlRemoveDefaultNamespace(nodePtr)
-}
 
 // Returns a list of all the namespace declarations that exist on this node.
 
